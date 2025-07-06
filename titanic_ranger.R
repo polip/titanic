@@ -8,17 +8,22 @@ train <- read_csv('train.csv' ) |>
   janitor::clean_names()
 
 train |> count(survived)
-
+train |> glimpse()
+train |> count(pclass)
+train |> count(embarked)
 
 train <- train %>% 
   janitor::clean_names() %>% 
   mutate(survived=factor(survived), survived=fct_relevel(survived,'0',after=1))  %>% 
-  #mutate(pclass=factor(as.character(pclass),labels = c('1st','2nd','3rd'))) %>% 
-  mutate(sex = factor(sex), embarked = factor(embarked)) |> 
-  mutate(title=str_extract(name,'\\,\\s*(.*?)\\s*\\.'), title=str_remove(title,', '), title=str_remove(title,'\\.'), title=factor(title)) |>  
-  select(-name,-cabin,-ticket)
+  mutate(pclass=factor(pclass,labels = c('1st','2nd','3rd'))) %>% 
+  mutate(sex = factor(sex)) |> 
+  mutate(embarked= factor(embarked)) |> 
+  mutate(title=str_extract(name,'\\,\\s*(.*?)\\s*\\.'), title=str_remove(title,', '), title=str_remove(title,'\\.'), title=factor(title)) 
 
 train |> glimpse()
+
+train <- train |> 
+  select(-name, -ticket,-cabin)
 
 ### recipe
 recipe <- recipe(survived~., train) %>% 
