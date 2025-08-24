@@ -146,11 +146,9 @@ ui <- page_sidebar(theme = bs_theme(bootswatch = "minty"),
 # Server
 server <- function(input, output, session) {
   # Load the pre-trained model (assuming it exists)
-  # In a real scenario, you would load your actual model here
-  
-  titanic_model <- read_rds('titanic_model.rds')  
- 
-# Reactive value for uploaded data
+  titanic_model <- read_rds('titanic_model.rds')
+
+  # Reactive value for uploaded data
   uploaded_data <- reactive({
     req(input$file)
     
