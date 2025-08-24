@@ -5,7 +5,6 @@ library(dplyr)
 library(googleCloudStorageR)
 library(googleAuthR)
 
-### ffsdf
 
 ### google cloud storage autentifikacija
 options(googleAuthR.client_id = Sys.getenv("GOOGLE_AUTH_CLIENT_ID"))
