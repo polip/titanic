@@ -1,0 +1,13 @@
+name: titanic
+title: titanic
+username: ivan-lozo
+account: ivan-lozo
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15035707
+bundleId: 10572675
+url: https://ivan-lozo.shinyapps.io/titanic/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|app_old.R|deploy.R|deployment/Dockerfile|deployment/plumber.R|deployment/vetiver_renv.lock|gender_submission.csv|make_csv_for_prediction.R|plumber.R|sample_submission.csv|sample_submission_v2.csv|test.csv|titanic.csv|Titanic.qmd|titanic.zip|titanic_ranger.R|train.csv

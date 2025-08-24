@@ -1,0 +1,54 @@
+---
+title: "Titanic"
+format: html
+---
+
+## Import libraries
+
+```{r}
+library(tidymodels)
+library(readr)
+library(forcats)
+library(DataExplorer)
+library(stringr)
+
+```
+
+## Import data
+
+
+```{r}
+train <- read_csv('train.csv' ) |> 
+  janitor::clean_names()
+```
+
+```{r}
+train |> 
+  count(survived)
+```
+
+
+```{r}
+train |> 
+  count(pclass)
+```
+
+```{r}
+train_baked |> count(title, sort=T             )
+```
+
+You can add options to executable code like this 
+
+```{r}
+train %>% glimpse()
+
+plot_histogram(train)
+plot_bar(train)
+plot_missing(train)
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+plot_histogram(train)
+
+```
