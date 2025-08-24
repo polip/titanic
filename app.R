@@ -6,7 +6,7 @@ library(tidyverse)
 library(tidymodels)
 library(ranger)
 
-# UI
+# UI jbhjh khbkhkhg
 ui <- page_sidebar(theme = bs_theme(bootswatch = "minty"),
   title = "Titanic Survivor Prediction",
   sidebar = sidebar(
