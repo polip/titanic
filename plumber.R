@@ -13,7 +13,7 @@ if (FALSE) {
     library(workflows)
 }
 b <- board_gcs("titanic-model-1602", prefix = NULL)
-v <- vetiver_pin_read(b, "titanic_survived_predictor", version = "20250817T131846Z-cb89b")
+v <- vetiver_pin_read(b, "titanic_survived_predictor", version = "20250825T064646Z-5ac3d")
 
 #* @plumber
 function(pr) {

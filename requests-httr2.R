@@ -2,7 +2,6 @@ library(httr2)
 library(dplyr)
 library(googleAuthR)
 
-
 # Authenticate using the service account key
 auth <- gar_auth_service(json_file = "titanic-466214-dd0b8f1ad195.json")
 
