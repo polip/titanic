@@ -180,7 +180,6 @@ server <- function(input, output, session) {
 
 # Single prediction
   single_result <- eventReactive(input$predict_single, {
-    
 # Create data frame from manual inputs
     input_data <- data.frame(
       passenger_id=NA,
@@ -198,13 +197,10 @@ server <- function(input, output, session) {
 # Make prediction
     result <- input_data |> 
       bind_cols(predict(titanic_model,input_data,type = 'class')) |> 
-      bind_cols(predict(titanic_model,input_data,type = 'prob')) 
-    
+      bind_cols(predict(titanic_model,input_data,type = 'prob'))
     return(result)
   })
-  
-  
-  
+ 
 # Batch predictions
   batch_results <- eventReactive(input$predict_batch, {
     req(uploaded_data())

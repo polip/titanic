@@ -38,13 +38,14 @@ local_model_board |> vetiver_pin_write(vet_model)
 
 ### plumber file
 vetiver_write_plumber(
-  board = local_model_board,
+  board = local_model_board, ### lokalni board
   name = "titanic_survived_predictor"
 )
 
 
 ### docker file, dodaj COPY board-local foldera ako je lokalni model
-vetiver_write_docker(
-    vetiver_model = vet_model, # nolint: indentation_linter.
-    base_image = glue::glue("FROM rocker/r-ver:{getRversion()}")
+vetiver_write_docker(   
+    vetiver_model = vet_model,
+    base_image = glue::glue("FROM rocker/r-ver:{getRversion()}"),
+
 )

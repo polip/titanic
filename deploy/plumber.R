@@ -12,10 +12,10 @@ if (FALSE) {
     library(recipes)
     library(workflows)
 }
-b <- board_folder(path = "board-local")
+b <- board_folder(path = "/home/ivan/Documents/titanic/board-local")
 v <- vetiver_pin_read(b, "titanic_survived_predictor")
 
 #* @plumber
 function(pr) {
-    pr %>% vetiver_api(v)
+pr %>% vetiver_api(v)
 }
