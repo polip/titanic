@@ -1,12 +1,12 @@
 file: titanic_survived_predictor.rds
 file_size: 277038
-pin_hash: cb89b74aba0f2ba9
+pin_hash: 5ac3d966e557e1fc
 type: rds
 title: 'titanic_survived_predictor: a pinned list'
 description: A ranger classification modeling workflow
 tags: ~
 urls: ~
-created: 20250817T131845Z
+created: 20250825T093850Z
 api_version: 1
 user:
   required_pkgs:

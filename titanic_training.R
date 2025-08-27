@@ -86,7 +86,7 @@ vip(train_fit)
 
 #### test data
 
-test <- read_csv('test.csv') %>% 
+test <- read_csv('data/test.csv') %>% 
   janitor::clean_names() %>% 
   #mutate(pclass=factor(pclass,labels = c('1st','2nd','3rd'))) %>% 
   mutate(title=str_extract(name,'\\,\\s*(.*?)\\s*\\.'), title=str_remove(title,', '), title=str_remove(title,'\\.')) %>% 
@@ -105,7 +105,7 @@ sample_submission <- bind_cols(test %>% select(passenger_id),test_pred_class %>%
 
 sample_submission <- sample_submission %>% 
   rename('PassengerID'=passenger_id,'Survived'=.pred_class)
-sample_submission %>% write_csv('sample_submission_v2.csv')
+sample_submission %>% write_csv('data/sample_submission_v2.csv')
 
 
 
