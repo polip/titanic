@@ -18,7 +18,7 @@ library(stringr)
 
 
 ```{r}
-train <- read_csv('train.csv' ) |> 
+train <- read_csv('data/train.csv' ) |> 
   janitor::clean_names()
 ```
 
