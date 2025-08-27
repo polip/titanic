@@ -6,7 +6,7 @@ library(googleCloudStorageR)
 library(googleAuthR)
 
 ## fitani model
-train_fit  <- readr::read_rds("titanic_model.rds")
+train_fit  <- readr::read_rds("shiny_app/titanic_model.rds")
 ### train podaci za prototip
 train <- readr::read_rds("data/train.rds")
 
