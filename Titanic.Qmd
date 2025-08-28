@@ -1,6 +1,10 @@
 ---
 title: "Titanic"
 format: html
+execute: 
+  echo: true
+  warning: false
+
 ---
 
 ## Import libraries
@@ -23,32 +27,32 @@ train <- read_csv('data/train.csv' ) |>
 ```
 
 ```{r}
+train |> glimpse()
+
+```
+
+```{r}
 train |> 
   count(survived)
 ```
 
 
+
+Plot numerical variables
 ```{r}
-train |> 
-  count(pclass)
+plot_histogram(train |> select(-passenger_id))
+
 ```
 
-```{r}
-train_baked |> count(title, sort=T             )
-```
-
-You can add options to executable code like this 
+Plot categorical variables
 
 ```{r}
-train %>% glimpse()
-
-plot_histogram(train)
 plot_bar(train)
-plot_missing(train)
+
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
-```{r}
-plot_histogram(train)
+Plot missing
 
+```{r}
+plot_missing(train)
 ```
