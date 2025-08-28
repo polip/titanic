@@ -4,7 +4,6 @@ format: html
 execute: 
   echo: true
   warning: false
-
 ---
 
 ## Import libraries
@@ -19,7 +18,6 @@ library(stringr)
 ```
 
 ## Import data
-
 
 ```{r}
 train <- read_csv('data/train.csv' ) |> 
@@ -36,9 +34,8 @@ train |>
   count(survived)
 ```
 
-
-
 Plot numerical variables
+
 ```{r}
 plot_histogram(train |> select(-passenger_id))
 
