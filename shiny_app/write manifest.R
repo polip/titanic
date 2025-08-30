@@ -1,4 +1,4 @@
-# write manifest using rsconnect
+# write manifest using rsconnect for POSIT deployment
 # Load rsconnect package
 library(rsconnect)
 install.packages("ranger")
