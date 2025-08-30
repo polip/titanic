@@ -1,6 +1,9 @@
-### Cleaning and change of data types
+### Cleaning and preparation, change of data types
 
 library(tidyverse)
+
+train <- read_csv('data/train.csv' ) 
+
 train_clean <- train %>% 
   janitor::clean_names() %>% 
   mutate(survived=factor(survived), survived=fct_relevel(survived,"0",after=1))  %>% 
@@ -8,8 +11,6 @@ train_clean <- train %>%
   mutate(sex = factor(sex)) |> 
   mutate(embarked= factor(embarked)) |> 
   mutate(title=str_extract(name,"\\,\\s*(.*?)\\s*\\."), title=str_remove(title,", "), title=str_remove(title,"\\."), title=factor(title)) 
-
-
 
 
 train_clean <- train_clean |> 

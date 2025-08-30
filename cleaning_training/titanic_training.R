@@ -6,8 +6,6 @@ library(stringr)
 train_clean <- read_rds("data/train_clean.rds") 
 train_clean |> glimpse()
 
-
-
 ### recipe
 recipe <- recipe(survived~., train_clean) %>% 
   update_role(passenger_id, new_role = "id variable") %>% 
@@ -56,21 +54,17 @@ train_fit <- fit(rf_wf, train_clean)
 train_fit |> write_rds(
   "/home/ivan/Documents/titanic/titanic_model.rds")
 
-
 library(vip)
 vip (train_fit)
 
-
-#### test data
+#### test data prediction and submission preparation
 
 test <- read_csv("data/test.csv") |> 
   janitor::clean_names() |> 
-  #mutate(pclass=factor(pclass,labels = c("1st","2nd","3rd"))) |> 
+  mutate(pclass=factor(pclass,labels = c("1st","2nd","3rd"))) |> 
   mutate(title=str_extract(name,"\\,\\s*(.*?)\\s*\\."), title=str_remove(title,", "), title=str_remove(title,"\\.")) |> 
   mutate(across(where(is.character),factor))  
 
-test |> 
- count(title)
 
 test_pred <- predict(train_fit,test,type = "prob")
 test_pred_class <- predict(train_fit,test,type = "class")
