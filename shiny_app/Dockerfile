@@ -1,3 +1,5 @@
+# Docker file to run Shiny app
+
 # Use the Rocker r 4.4 image
 FROM rocker/shiny-verse:4.4
 
