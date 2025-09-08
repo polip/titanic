@@ -6,7 +6,7 @@ title: 'titanic_survived_predictor: a pinned list'
 description: A ranger classification modeling workflow
 tags: ~
 urls: ~
-created: 20250825T093850Z
+created: 20250908T071330Z
 api_version: 1
 user:
   required_pkgs:

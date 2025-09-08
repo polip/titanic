@@ -4,6 +4,9 @@ library(pins)
 library(plumber)
 library(rapidoc)
 library(vetiver)
+library(googleCloudStorageR)
+library(googleAuthR)
+library(dplyr)
 
 # Packages needed to generate model predictions
 if (FALSE) {
@@ -12,10 +15,15 @@ if (FALSE) {
     library(recipes)
     library(workflows)
 }
-b <- board_folder(path = "/home/ivan/Documents/titanic/board-local")
+
+## google cloud storage
+gcs_auth(json_file = "/opt/ml/titanic-466214-95c689d94120.json")
+
+### google cloud boar
+b <- board_gcs("titanic-model-1602", prefix = NULL)
 v <- vetiver_pin_read(b, "titanic_survived_predictor")
 
 #* @plumber
 function(pr) {
-pr %>% vetiver_api(v)
+    pr %>% vetiver_api(v)
 }

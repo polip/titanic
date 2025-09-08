@@ -18,15 +18,12 @@ titanic_tibble <- tibble(
 # Authenticate using the service account key
 auth <- gar_auth_service(json_file = "~/Documents/titanic/titanic-466214-95c689d94120.json") # nolint
 
-
 # Get the access token 
 my_token <- gar_token()
 access_token  <- my_token$auth_token$credentials$access_token
 
-googleAuthR::gar_has_token()
 # URL of deployed Cloud Run service
 base_url <- 'https://titanic-88146497745.europe-west1.run.app'
-
 
 # Build and perform the POST request
 response <- request(base_url) %>%
@@ -36,5 +33,5 @@ response <- request(base_url) %>%
   req_perform()
 
 # Print the response status and the prediction result
-print(resp_body_json(response))
 print(resp_status(response))
+print(resp_body_json(response))
