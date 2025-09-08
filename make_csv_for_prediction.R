@@ -19,3 +19,5 @@ titanic_input_json <- titanic_tibble |>
 
 titanic_tibble <- titanic_tibble |> 
   mutate(across(where(is.character), factor)) 
+
+  ### ffsd 
