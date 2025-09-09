@@ -17,7 +17,11 @@ if (FALSE) {
 }
 
 ## google cloud storage
-gcs_auth(json_file = "/opt/ml/titanic-466214-95c689d94120.json")
+tryCatch({
+  gcs_auth() # Uses ADC when running on Cloud Run
+}, error = function(e) {
+  message("Authentication error: ", e$message)
+})
 
 ### google cloud boar
 b <- board_gcs("titanic-model-1602", prefix = NULL)
