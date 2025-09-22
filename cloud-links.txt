@@ -1,6 +1,3 @@
 
-https://titanic-api-88146497745.europe-west12.run.app
-https://titanic-shiny-88146497745.europe-west12.run.app/
 
-https://connect.posit.cloud/polip/content/0198eb6b-059c-521c-667e-615c01133267
 
