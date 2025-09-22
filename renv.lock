@@ -2471,51 +2471,6 @@
       "Maintainer": "Erik Grönroos <erik.gronroos@8-bit-sheep.com>",
       "Repository": "CRAN"
     },
-    "googleCloudStorageR": {
-      "Package": "googleCloudStorageR",
-      "Version": "0.7.0",
-      "Source": "Repository",
-      "Type": "Package",
-      "Title": "Interface with Google Cloud Storage API",
-      "Description": "Interact with Google Cloud Storage <https://cloud.google.com/storage/>  API in R. Part of the 'cloudyr' <https://cloudyr.github.io/> project.",
-      "Authors@R": "c(person(\"Mark\", \"Edmondson\",email = \"r@sunholo.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-8434-3881\")))",
-      "URL": "https://code.markedmondson.me/googleCloudStorageR/",
-      "BugReports": "https://github.com/cloudyr/googleCloudStorageR/issues",
-      "Depends": [
-        "R (>= 3.2.0)"
-      ],
-      "Imports": [
-        "assertthat (>= 0.2.0)",
-        "cli",
-        "curl",
-        "googleAuthR (>= 1.4.0)",
-        "httr (>= 1.2.1)",
-        "jsonlite (>= 1.0)",
-        "openssl",
-        "utils",
-        "yaml",
-        "zip (>= 2.0.3)"
-      ],
-      "Suggests": [
-        "fs",
-        "googleComputeEngineR",
-        "knitr",
-        "readr",
-        "rmarkdown",
-        "sodium",
-        "testthat",
-        "usethis"
-      ],
-      "License": "MIT + file LICENSE",
-      "VignetteBuilder": "knitr",
-      "RoxygenNote": "7.1.2",
-      "Config/testthat/edition": "3",
-      "Config/testthat/parallel": "false",
-      "NeedsCompilation": "no",
-      "Author": "Mark Edmondson [aut, cre] (<https://orcid.org/0000-0002-8434-3881>)",
-      "Maintainer": "Mark Edmondson <r@sunholo.com>",
-      "Repository": "CRAN"
-    },
     "googledrive": {
       "Package": "googledrive",
       "Version": "2.1.1",
@@ -7743,34 +7698,6 @@
       "NeedsCompilation": "yes",
       "Author": "Max Kuhn [aut], Davis Vaughan [aut], Emil Hvitfeldt [aut, cre] (<https://orcid.org/0000-0002-0679-1945>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Emil Hvitfeldt <emil.hvitfeldt@posit.co>",
-      "Repository": "CRAN"
-    },
-    "zip": {
-      "Package": "zip",
-      "Version": "2.3.3",
-      "Source": "Repository",
-      "Title": "Cross-Platform 'zip' Compression",
-      "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Kuba\", \"Podgórski\", role = \"ctb\"), person(\"Rich\", \"Geldreich\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
-      "Description": "Cross-Platform 'zip' Compression Library. A replacement for the 'zip' function, that does not require any additional external tools on any platform.",
-      "License": "MIT + file LICENSE",
-      "URL": "https://github.com/r-lib/zip, https://r-lib.github.io/zip/",
-      "BugReports": "https://github.com/r-lib/zip/issues",
-      "Suggests": [
-        "covr",
-        "pillar",
-        "processx",
-        "R6",
-        "testthat",
-        "withr"
-      ],
-      "Config/Needs/website": "tidyverse/tidytemplate",
-      "Config/testthat/edition": "3",
-      "Config/usethis/last-upkeep": "2025-05-07",
-      "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2.9000",
-      "NeedsCompilation": "yes",
-      "Author": "Gábor Csárdi [aut, cre], Kuba Podgórski [ctb], Rich Geldreich [ctb], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
-      "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
       "Repository": "CRAN"
     }
   }

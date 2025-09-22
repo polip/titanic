@@ -145,8 +145,12 @@ ui <- page_sidebar(theme = bs_theme(bootswatch = "minty"),
 
 # Server
 server <- function(input, output, session) {
-  # Load the pre-trained model (assuming it exists)
-  titanic_model <- read_rds('titanic_model.rds')
+  library(vetiver)
+  library(pins)
+  
+  # Load the pre-trained model (assuming it exists)  
+  board_gcs <- board_folder(path = "/titanic-model-1602")
+  titanic_model <- vetiver_pin_read(board_gcs,"titanic_survived_predictor" )
 
   # Reactive value for uploaded data
   uploaded_data <- reactive({

@@ -7,5 +7,4 @@ gcloud auth configure-docker europe-west12-docker.pkg.dev
 
 docker tag titanic-api:gcs europe-west12-docker.pkg.dev/titanic-466214/my-r-repo/titanic-api:gcs
 
-
 docker push europe-west12-docker.pkg.dev/titanic-466214/my-r-repo/titanic-api:gcs
