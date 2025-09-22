@@ -41,13 +41,13 @@ vetiver_write_plumber(file = "deploy/plumber.R",
   board = gcs_model_board, ### gcs board
   name = "titanic_survived_predictor"
 )
-
+vet_model <- vetiver_pin_read(gcs_model_board, "titanic_survived_predictor")
 ### docker file za API 
 ### dodaj COPY board-local foldera ako je lokalni model
 vetiver_write_docker(path="deploy",
 plumber_file = "deploy/plumber.R",
     vetiver_model = vet_model,
-    base_image = glue::glue("FROM rocker/r-ver:{getRversion()}"),
+    base_image = glue::glue("FROM rstudio/plumber:v1.0.0"),
 
 )
 

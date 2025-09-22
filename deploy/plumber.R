@@ -4,9 +4,6 @@ library(pins)
 library(plumber)
 library(rapidoc)
 library(vetiver)
-library(googleCloudStorageR)
-library(googleAuthR)
-library(dplyr)
 
 # Packages needed to generate model predictions
 if (FALSE) {
@@ -15,15 +12,6 @@ if (FALSE) {
     library(recipes)
     library(workflows)
 }
-
-## google cloud storage
-tryCatch({
-  gcs_auth() # Uses ADC when running on Cloud Run
-}, error = function(e) {
-  message("Authentication error: ", e$message)
-})
-
-### google cloud boar
 b <- board_gcs("titanic-model-1602", prefix = NULL)
 v <- vetiver_pin_read(b, "titanic_survived_predictor")
 

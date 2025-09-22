@@ -16,7 +16,7 @@ titanic_tibble <- tibble(
 )
 
 # Authenticate using the service account key
-auth <- gar_auth_service(json_file = "~/Documents/titanic/titanic-466214-95c689d94120.json") # nolint
+auth <- gar_auth_service(json_file = "~/Documents/titanic/deploy/titanic-466214-95c689d94120.json") # nolint
 
 # Get the access token 
 my_token <- gar_token()

@@ -1,11 +1,10 @@
 
+docker build -t your-image-name -f deploy/Dockerfile .
+
 gcloud auth login
 gcloud auth configure-docker europe-west12-docker.pkg.dev
 
+docker tag titanic_shiny:rocker-shinyvesre europe-west12-docker.pkg.dev/titanic-466214/my-r-repo/titanic-shiny:latest
 
-docker tag titanic-api:latest europe-west12-docker.pkg.dev/titanic-466214/my-r-repo
-/titanic-api:latest
 
 docker push europe-west12-docker.pkg.dev/titanic-466214/my-r-repo/titanic-api:latest
-
-
