@@ -12,7 +12,7 @@ if (FALSE) {
     library(recipes)
     library(workflows)
 }
-b <- board_gcs("titanic-model-1602", prefix = NULL)
+b <- board_folder(path = "/titanic-model-1602")
 v <- vetiver_pin_read(b, "titanic_survived_predictor")
 
 #* @plumber

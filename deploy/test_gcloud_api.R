@@ -12,7 +12,7 @@ titanic_tibble <- tibble(
   parch=c(1,0,3),
   fare=c(8.23,4.67,8.45),
   embarked=c("C","Q","S"),
-  title=c("Mr", "Mrs","Capt")
+ title=c("Mr", "Mrs","Capt")
 )
 
 # Authenticate using the service account key
@@ -23,7 +23,8 @@ my_token <- gar_token()
 access_token  <- my_token$auth_token$credentials$access_token
 
 # URL of deployed Cloud Run service
-base_url <- 'https://titanic-88146497745.europe-west1.run.app'
+base_url <- 'https://titanic-api-88146497745.europe-west12.run.app'
+
 
 # Build and perform the POST request
 response <- request(base_url) %>%
