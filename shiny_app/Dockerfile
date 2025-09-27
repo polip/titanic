@@ -44,5 +44,5 @@ USER shiny-user
 # Expose the app port
 EXPOSE 3838
 
-# Run the app directly with R instead of shiny-server
-CMD ["R", "-e", "shiny::runApp('app.R', host='0.0.0.0', port=3838)"]
+# Run the app directly with R 
+CMD ["R", "-e", "shiny::runApp('app.R', host='0.0.0.0', port=as.numeric(Sys.getenv('PORT',8080)))"]

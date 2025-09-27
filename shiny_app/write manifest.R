@@ -1,9 +1,12 @@
 # write manifest using rsconnect for POSIT deployment
-# Load rsconnect package
-library(rsconnect)
-install.packages("ranger")
+
 
 # Write manifest for the current directory
-writeManifest(appDir = ".", appFiles = "app.R", appPrimaryDoc = NULL)
-renv::snapshot()
+renv::status()
+renv::install("googleCloudStorageR")
+
+# Load rsconnect package
+library(rsconnect)
+writeManifest(appDir = "shiny_app", appFiles = "app.R", appPrimaryDoc = NULL)
+
 

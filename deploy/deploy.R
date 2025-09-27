@@ -26,14 +26,14 @@ vet_model <- vetiver_model(
 ## google cloud storage
 gcs_auth(json_file = "deploy/titanic-466214-95c689d94120.json")
 gcs_list_buckets("titanic-466214")
-gcs_
+
 
 ### google cloud board
 gcs_model_board <- board_gcs("titanic-model-1602")
 gcs_model_board |> vetiver_pin_write(vet_model)
 pin_list(gcs_model_board)
 
-)
+
 
 ### lokalni board s modelom
 local_model_board <- board_folder("board-local")
