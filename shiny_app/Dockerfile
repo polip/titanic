@@ -1,12 +1,13 @@
-# Docker file to run Shiny app
+# Docker file to run Shiny app - Multi-stage build
 
-# Use the Rocker r 4.4 image
-FROM rocker/shiny-verse:4.4
+# Build stage
+FROM rocker/shiny-verse:4.4 AS builder
 ENV RENV_CONFIG_REPOS_OVERRIDE https://packagemanager.rstudio.com/cran/latest
 
-RUN apt-get update -qq && apt-get install -y --no-install-recommends libxml2-dev \
+# Install build dependencies and development tools
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+  libxml2-dev \
   libcurl4-openssl-dev \
-  # Add pandoc as it is not in the base image but required by rmarkdown (a vetiver dependency)
   pandoc \
   fontconfig \
   libfreetype6-dev \
@@ -25,10 +26,35 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends libxml2-dev
   zip \
   zlib1g-dev \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
-  
 
-# Install required R packages
+# Install R packages
 RUN R -e "install.packages(c('bslib', 'DT', 'shiny','tidymodels', 'ranger','vetiver','pins'), dependencies = TRUE)"
+
+# Runtime stage
+FROM rocker/shiny-verse:4.4 AS runtime
+
+# Install only runtime dependencies (same as build stage but without build tools)
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+  libxml2-dev \
+  libcurl4-openssl-dev \
+  pandoc \
+  fontconfig \
+  libfreetype6-dev \
+  libfribidi-dev \
+  libharfbuzz-dev \
+  libjpeg-dev \
+  libpng-dev \
+  libtiff-dev \
+  libglpk-dev \
+  libicu-dev \
+  libsodium-dev \
+  libssl-dev \
+  libx11-dev \
+  zlib1g-dev \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Copy R packages from builder stage
+COPY --from=builder /usr/local/lib/R/site-library /usr/local/lib/R/site-library
 
 # Create app directory and copy files
 WORKDIR /app

@@ -33,7 +33,7 @@ COPY renv.lock renv.lock
 RUN Rscript -e "install.packages(c('renv', 'plumber'))"
 RUN Rscript -e "renv::consent(provided = TRUE); renv::restore(clean = TRUE, lockfile = 'renv.lock')"
 
-COPY deploy/plumber.R plumber.R
+COPY api/plumber.R plumber.R
 
 # Ensure the app user owns the files
 RUN chown -R app:app /home/app
@@ -42,4 +42,4 @@ USER app
 
 EXPOSE 8080
 
-ENTRYPOINT ["R", "-e", "pr <- plumber::plumb('plumber.R'); pr$run(host = '0.0.0.0', port = 8080)"]
+ENTRYPOINT ["R", "-e", "pr <- plumber::plumb('plumber.R'); pr$run(host='0.0.0.0', port=as.numeric(Sys.getenv('PORT',8080)))"]

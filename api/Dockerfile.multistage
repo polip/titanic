@@ -1,0 +1,62 @@
+# Phase 1: Build stage with all dependencies
+FROM rocker/r-ver:4.5.1 AS builder
+
+ENV RENV_CONFIG_REPOS_OVERRIDE https://packagemanager.rstudio.com/cran/latest
+
+# Install build dependencies
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+  libxml2-dev \
+  libcurl4-openssl-dev \
+  pandoc \
+  fontconfig \
+  libfreetype6-dev \
+  libfribidi-dev \
+  libharfbuzz-dev \
+  libjpeg-dev \
+  libpng-dev \
+  libtiff-dev \
+  libglpk-dev \
+  libicu-dev \
+  libsodium-dev \
+  libssl-dev \
+  libx11-dev \
+  make \
+  unzip \
+  zip \
+  zlib1g-dev \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+
+# Install R packages
+COPY renv.lock renv.lock
+RUN Rscript -e "install.packages(c('renv', 'plumber'))"
+RUN Rscript -e "renv::consent(provided = TRUE); renv::restore(clean = TRUE, lockfile = 'renv.lock')"
+
+# Phase 2: Runtime stage with minimal dependencies
+FROM rocker/r-ver:4.5.1 AS runtime
+
+# Install only essential runtime libraries
+RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+  libxml2 \
+  libcurl4 \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash app
+WORKDIR /home/app
+
+# Copy R libraries from builder stage
+COPY --from=builder /usr/local/lib/R/site-library /usr/local/lib/R/site-library
+COPY --from=builder /usr/local/lib/R/library /usr/local/lib/R/library
+
+# Copy application files
+COPY api/plumber.R plumber.R
+
+# Set ownership and switch to app user
+RUN chown -R app:app /home/app
+USER app
+
+EXPOSE 8080
+
+ENTRYPOINT ["R", "-e", "pr <- plumber::plumb('plumber.R'); pr$run(host='0.0.0.0', port=as.numeric(Sys.getenv('PORT',8080)))"]

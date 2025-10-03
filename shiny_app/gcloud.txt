@@ -1,0 +1,35 @@
+gcloud artifacts repositories create my-repo \
+  --repository-format=docker \
+  --location=europe-central2 \
+  --description="Docker repo for Shiny app"
+
+
+gcloud auth login
+gcloud auth configure-docker europe-west12-docker.pkg.dev
+
+BUILD
+docker build -t titanic-shiny:gcs -f shiny_app/Dockerfile.
+
+TAG
+docker tag titanic-shiny:gcs europe-west12-docker.pkg.dev/titanic-466214/my-r-repo/titanic-shiny:gcs
+
+PUSH
+docker push europe-west12-docker.pkg.dev/titanic-466214/my-r-repo/titanic-shiny:gcs
+
+SET SERVICE PERMISSIONS 
+gcloud projects add-iam-policy-binding titanic-466214 \
+  --member="serviceAccount:88146497745-compute@developer.gserviceaccount.com" \
+  --role="roles/storage.objectAdmin"
+
+gcloud projects add-iam-policy-binding titanic-466214 \
+  --member="serviceAccount:88146497745-compute@developer.gserviceaccount.com" \
+  --role="roles/artifactregistry.reader"
+
+gcloud run deploy titanic-shiny \
+  --image=europe-west12-docker.pkg.dev/titanic-466214/my-r-repo/titanic-shiny:gcs \
+  --region=europe-west12 \
+  --platform=managed \
+  --service-account=88146497745-compute@developer.gserviceaccount.com \
+  --allow-unauthenticated \
+  --project=titanic-466214
+

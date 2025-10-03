@@ -5,4 +5,5 @@ Google cloud link for Shiny app:
 https://titanic-shiny-88146497745.europe-west12.run.app/
 
 Posit Connect cloud link for Shiny app:
-https://connect.posit.cloud/polip/content/0198eb6b-059c-521c-667e-615c01133267
+
+https://connect.posit.cloud/polip/content/019989c0-201d-72ea-5837-69dc3629a3b2
